@@ -1,0 +1,510 @@
+:root {
+  --white: #fff;
+  --gray: #ccc;
+  --orange: #ff7a00;
+  --greenBgBody: #d0e92b;
+  --greenBgSection: #7a8c00;
+  --greenBgArticle: #94aa00;
+  --greenBgElements: #606e00;
+  --good: #b7d300d2;
+}
+
+body,
+input {
+  font-family: "Inter", sans-serif;
+}
+.search img,
+.currentLocation {
+  cursor: pointer;
+}
+.line {
+  background: var(--white);
+  border: none;
+  width: 2em;
+  height: 0.5em;
+  border-radius: 3em;
+}
+
+body {
+  margin: 0;
+  background: var(--greenBgBody);
+}
+
+.mar {
+  margin: 0.5em 4%;
+}
+.loading {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 1em;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.5em solid var(--white);
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: loading 1s infinite;
+  display: none;
+}
+
+header,
+.part1 article,
+.part1 section {
+  justify-content: space-between;
+}
+
+.articleLogo,
+.search,
+.currentLocation,
+header,
+.part1 article,
+.part1 section,
+.part2 article,
+.part3,
+.part3 .today section,
+.part3 .today .inData,
+.part3 .today .data article,
+.daysForecast,
+.daysForecast article,
+.airQuality section:first-child,
+.airQuality section:first-child article,
+.airQuality section:last-child,
+.details,
+.sun section,
+.sectionOtherDay,
+.sectionDirectionAir {
+  display: flex;
+  align-items: center;
+}
+
+.input::placeholder {
+  color: var(--white);
+}
+
+.gridElements {
+  margin-top: 3em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1em;
+}
+.gridElements > section {
+  border-radius: 2em;
+}
+
+[class^="part"],
+.otherDay,
+.directionAir {
+  background: var(--greenBgElements);
+  color: var(--white);
+}
+
+.search {
+  background: var(--greenBgSection);
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  width: 30%;
+}
+.search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-right: 0.5em;
+  width: 100%;
+}
+.search img {
+  width: 2em;
+}
+
+.currentLocation {
+  background: var(--orange);
+  display: inline-flex;
+  padding: 1em 2em;
+  border-radius: 3em;
+  justify-content: center;
+}
+.currentLocation img {
+  margin-right: 1em;
+  width: 1.75em;
+}
+.currentLocation h2 {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.25em;
+  margin: 0;
+}
+
+.articleLogo img {
+  width: 3em;
+  margin-right: 1em;
+}
+.articleLogo h1 {
+  color: var(--orange);
+  font-weight: 900;
+  margin: 0;
+  font-size: 2em;
+}
+.part1 {
+  grid-row: 1;
+  grid-column: 1;
+}
+.part1 article,
+.part1 section,
+.part2 article,
+.airQuality section:first-child,
+.sun section {
+  justify-content: space-around;
+}
+.now {
+  background: var(--greenBgSection);
+  padding: 0.25em 1em;
+  border-radius: 3em;
+}
+.celsius.actived,
+.fahrenheit.actived {
+  color: var(--white);
+}
+.celsius,
+.fahrenheit {
+  cursor: pointer;
+  color: var(--gray);
+}
+.part1 h1,
+.part2 section,
+.airQuality section:last-child article {
+  text-align: center;
+}
+
+.part1 h1 {
+  font-size: 4em;
+  font-weight: 700;
+  margin: 0.25em 0 0 0;
+}
+.part1 section {
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+}
+.part1 section article:not(:last-child) {
+  margin-right: 1em;
+}
+.part1 section img {
+  width: 1.25em;
+  margin-right: 1em;
+}
+
+.part2 {
+  grid-row: 2/-1;
+  grid-column: 1;
+  display: grid;
+  row-gap: 0.5em;
+  padding: 1em 0;
+}
+.part2 section {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 2em;
+  background: var(--greenBgSection);
+  padding-bottom: 0.5em;
+}
+.part2 section > h2 {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  border-radius: 2em;
+  background: var(--greenBgArticle);
+}
+.part2 article {
+  margin: 0;
+}
+.part2 img {
+  width: 1.5em;
+}
+.part2 article h2 {
+  font-size: 1.5em;
+}
+.big {
+  width: 2.5em !important;
+}
+
+.part3 {
+  flex-wrap: wrap;
+  grid-row: 1 / -2;
+  grid-column: 2 / -1;
+  justify-content: space-around;
+}
+.part3 > section {
+  width: calc(50% - 2em);
+  background: var(--greenBgSection);
+  margin: 0;
+}
+
+.today {
+  border-radius: 1em;
+  padding: 0.5em 0 2em;
+}
+.today > h2 {
+  margin-left: 1em;
+}
+.today section,
+.details {
+  justify-content: center;
+}
+.today img {
+  width: 15%;
+}
+.today .data {
+  margin-left: 1.5em;
+}
+.today .data h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+.today .data article *:not(:last-child) {
+  margin-right: 1em;
+}
+
+.__daysForecast {
+  border-radius: 1em;
+}
+.__daysForecast h2 {
+  margin-left: 0.5em;
+}
+.daysForecast {
+  gap: 0.25em;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.daysForecast .line {
+  width: 1.5em;
+}
+.daysForecast article {
+  background: var(--greenBgArticle);
+  border-radius: 2em;
+  padding: 0.2em 1em;
+  font-size: 0.6em;
+  width: calc(50% - 2em - 0.25em);
+}
+.daysForecast article img {
+  width: 1.5em;
+  margin-right: 1em;
+}
+
+.airQuality {
+  padding: 2em 0 1em;
+  border-radius: 1em;
+}
+.imgAir {
+  width: 3em;
+  margin-right: 1em;
+}
+.headerAir article img + h2 {
+  font-size: 1.25em;
+}
+.headerAir .quality {
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 2em;
+}
+.headerAir .quality.bad {
+  background: var(--orange);
+}
+.headerAir .quality.good {
+  background: var(--good);
+}
+.contentAir {
+  justify-content: space-evenly;
+}
+.contentAir h3 {
+  font-weight: 500;
+}
+
+.sun {
+  padding: 3em 0;
+  border-radius: 1em;
+}
+.sun > h2 {
+  margin: 0 0 0 1em;
+}
+.elementsSun {
+  text-align: center;
+}
+.details img {
+  width: 2em;
+  margin-right: 1em;
+}
+.details h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.pt4 {
+  grid-row: 3;
+  grid-column: 2/-1;
+}
+.sectionOtherDay,
+.sectionDirectionAir {
+  justify-content: space-between;
+  font-size: 0.65em;
+  height: 50%;
+}
+.otherDay,
+.directionAir {
+  text-align: center;
+  border-radius: 1em;
+  width: calc((100% / 8) - 0.5em);
+}
+.otherDay img,
+.directionAir img {
+  width: 70%;
+}
+
+@media screen and (max-width: 80em) {
+  .today > section {
+    font-size: 0.8em;
+  }
+
+  .imgAir {
+    width: 2em;
+    margin: 0 0.5em;
+  }
+
+  .details img {
+    width: 1.5em;
+    margin-right: 0.5em;
+  }
+  .details h1 {
+    font-size: 1.5em;
+  }
+
+  .airQuality {
+    font-size: 0.9em;
+  }
+
+  .daysForecast article {
+    width: 100%;
+    font-size: 0.7em;
+  }
+}
+@media screen and (max-width: 68.75em) {
+  .today .data {
+    font-size: 0.8em;
+  }
+
+  .title {
+    margin: 0.5em 0 0.5em 0 !important;
+    text-align: center !important;
+    display: block;
+    font-size: 1.25em;
+    letter-spacing: 0.1em;
+  }
+
+  .details h1 {
+    font-size: 1em;
+  }
+
+  .airQuality {
+    font-size: 0.8em;
+  }
+
+  .sun {
+    padding: 1.5em 0;
+  }
+}
+@media screen and (max-width: 64em) {
+  .today {
+    grid-column: 1;
+  }
+}
+@media screen and (max-width: 62.5em) {
+  .part1 section {
+    flex-direction: column;
+  }
+  .part3 .headerAir,
+  .part3 .sun .title {
+    font-size: 0.8em;
+  }
+  .part3 .today section {
+    text-align: center;
+    flex-direction: column-reverse;
+  }
+}
+@media screen and (max-width: 50em) {
+  header {
+    flex-direction: column;
+  }
+  .search,
+  .currentLocation {
+    width: 80%;
+  }
+  header > article:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+  .gridElements {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+  .part2 {
+    grid-row: 2;
+  }
+  .part3 {
+    grid-row: 3;
+  }
+  .part3 .headerAir,
+  .part3 .sun .title {
+    font-size: 1em;
+  }
+  .part3 > section {
+    width: 90%;
+  }
+  .part3 > section:not(:last-child) {
+    margin-bottom: 2em;
+  }
+  .pt4 {
+    grid-row: 4;
+  }
+  .part3,
+  .pt4 {
+    grid-column: 1;
+  }
+  .sectionOtherDay {
+    margin-bottom: 1em;
+  }
+}
+/* @media screen and (max-width: 31.25em) {
+} */
+
+@keyframes loading {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(./font/Inter-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(./font/Inter-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(./font/Inter-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Inter";
+  src: url(./font/Inter-Black.ttf) format("truetype");
+  font-weight: 900;
+}
