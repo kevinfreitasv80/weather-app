@@ -19,6 +19,37 @@ app.post("/", async (req, res) => {
     return;
   }
 
+  //const promises = [];
+  //const datas = [];
+
+  //  const dataWeather = await fetch(url.currentWeather(lat, lon, unit))
+  //    .then((r) => r.json())
+  //    .then((d) => d)
+  //    .catch((e) => `Error in request: ${e}`);
+
+  //const dataForecast = await fetch(url.forecast(lat, lon, unit))
+  //  .then((r) => r.json())
+  //  .then(async (dataPromise) => {
+  //    let list = await dataPromise.list;
+  //    list = getFormattedDate(list);
+  //    return list;
+  //  })
+  //  .catch((e) => `Error in request: ${e}`);
+
+  const dataAirPollution = await fetch(url.airPollution(lat, lon))
+    .then((r) => r.json())
+    .then(async (data) => {
+      let d = await data;
+      let list = [];
+      list.push(d.pm2_5, d.so2, d.no2, d.o3);
+      return list;
+    })
+    .catch((e) => `Error in request: ${e}`);
+
+  //promises.push(dataAirPollution, dataWeather, dataForecast);
+
+  //Promise.all(promises);
+
   //const dataWeather = await fetch(url.currentWeather(lat, lon, unit))
   //  .then((r) => r.json())
   //  .then((d) => d)
@@ -39,15 +70,34 @@ app.post("/", async (req, res) => {
   //  console.log(dataWeather.wind.deg);
   //}
 
-  let list;
-  const dataForecast = fetch(url.forecast(lat, lon, unit))
+  /* const dataAirPollution = fetch(url.airPollution(lat, lon))
     .then((r) => r.json())
-    .then(async (dataPromise) => {
-      list = await dataPromise.list;
-      list = getFormattedDate(list);
-      console.log("BBBBBBBBBBBBBB", list);
+    .then(async (data) => {
+      let d = await data;
+      console.log(d);
+      console.log(d.pm2_5);
+      console.log(d.so2);
+      console.log(d.no2);
+      console.log(d.o3);
     })
     .catch((e) => `Error in request: ${e}`);
+
+  if (dataAirPollution) {
+    console.log(dataAirPollution.pm2_5);
+    console.log(dataAirPollution.so2);
+    console.log(dataAirPollution.no2);
+    console.log(dataAirPollution.o3);
+  } */
+
+  //let list;
+  //const dataForecast = fetch(url.forecast(lat, lon, unit))
+  //  .then((r) => r.json())
+  //  .then(async (dataPromise) => {
+  //    list = await dataPromise.list;
+  //    list = getFormattedDate(list);
+  //    console.log("BBBBBBBBBBBBBB", list);
+  //  })
+  //  .catch((e) => `Error in request: ${e}`);
 });
 
 app.listen(process.env.PORT, () => {
