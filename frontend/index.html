@@ -9,26 +9,36 @@
     <script defer src="./assets/scripts/script.js"></script>
   </head>
   <body>
+    <noscript>Please active a Javascrit to app run</noscript>
+    <div id="loading">
+      <div class="background"></div>
+      <div class="animation"></div>
+    </div>
     <div class="mar">
-      <div class="loading"></div>
+      <div id="notification" class=""></div>
       <header>
         <article class="articleLogo">
           <img src="./assets/imgs/logo.svg" alt="Cloolo" />
           <h1>Cloolo</h1>
         </article>
-        <article class="search">
-          <input
-            type="text"
-            class="input"
-            id="input"
-            placeholder="Search a country or city"
-          />
-          <img
-            tabindex="0"
-            id="search"
-            src="./assets/imgs/search.svg"
-            alt="Search"
-          />
+        <article class="searchAndList">
+          <article class="search">
+            <input
+              type="text"
+              class="input"
+              id="input"
+              placeholder="Search a country or city"
+            />
+            <img
+              tabindex="0"
+              id="search"
+              src="./assets/imgs/search.svg"
+              alt="Search"
+            />
+          </article>
+          <div id="list">
+            <!-- <div>HAHAHAHHAHAH</div> -->
+          </div>
         </article>
         <article id="currentLocation" class="currentLocation" tabindex="0">
           <img src="./assets/imgs/marker.svg" alt="Marker Location" />

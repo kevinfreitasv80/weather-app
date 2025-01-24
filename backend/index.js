@@ -19,36 +19,41 @@ app.post("/", async (req, res) => {
     return;
   }
 
-  //const promises = [];
-  //const datas = [];
+  try {
+    const dataWeather = await fetch(url.currentWeather(lat, lon, unit))
+      .then((r) => r.json())
+      .then((d) => d)
+      .catch((e) => `Error in request: ${e}`);
 
-  //  const dataWeather = await fetch(url.currentWeather(lat, lon, unit))
-  //    .then((r) => r.json())
-  //    .then((d) => d)
-  //    .catch((e) => `Error in request: ${e}`);
+    const dataForecast = await fetch(url.forecast(lat, lon, unit))
+      .then((r) => r.json())
+      .then(async (dataPromise) => {
+        let list = await dataPromise.list;
+        list = getFormattedDate(list);
+        return list;
+      })
+      .catch((e) => `Error in request: ${e}`);
 
-  //const dataForecast = await fetch(url.forecast(lat, lon, unit))
-  //  .then((r) => r.json())
-  //  .then(async (dataPromise) => {
-  //    let list = await dataPromise.list;
-  //    list = getFormattedDate(list);
-  //    return list;
-  //  })
-  //  .catch((e) => `Error in request: ${e}`);
+    const dataAirPollution = await fetch(url.airPollution(lat, lon))
+      .then((r) => r.json())
+      .then(async (data) => {
+        let list = [];
+        let d = await data;
+        list.push(d.pm2_5, d.so2, d.no2, d.o3);
+        return list;
+      })
+      .catch((e) => `Error in request: ${e}`);
 
-  const dataAirPollution = await fetch(url.airPollution(lat, lon))
-    .then((r) => r.json())
-    .then(async (data) => {
-      let d = await data;
-      let list = [];
-      list.push(d.pm2_5, d.so2, d.no2, d.o3);
-      return list;
-    })
-    .catch((e) => `Error in request: ${e}`);
-
-  //promises.push(dataAirPollution, dataWeather, dataForecast);
-
-  //Promise.all(promises);
+    return res.status(200).json({
+      weather: dataWeather,
+      forecast: dataForecast,
+      airPollution: dataAirPollution,
+      message: "Data fetched successfully",
+    });
+  } catch (err) {
+    console.error("Error in request:", e);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 
   //const dataWeather = await fetch(url.currentWeather(lat, lon, unit))
   //  .then((r) => r.json())

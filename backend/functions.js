@@ -62,7 +62,30 @@ const url = {
     // https://api.openweathermap.org/data/2.5/air_pollution?lat=-3.7814272&lon=-38.486016&appid=2db7ccdb8721e1d326386b50cb8d588c
     return `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.KEYAPI}`;
     /* 
-      
+      {
+        "coord": {
+          "lon": -38.486,
+          "lat": -3.7814
+        },
+        "list": [
+          {
+            "main": {
+              "aqi": 1
+            },
+            "components": {
+              "co": 403.88,
+              "no": 0.94,
+              "no2": 3.81,
+              "o3": 45.78,
+              "so2": 2.35,
+              "pm2_5": 2.64,
+              "pm10": 6.63,
+              "nh3": 1.08
+            },
+            "dt": 1737723127
+          }
+        ]
+      }
     */
   },
 };
